@@ -1,0 +1,20 @@
+name: 'Technical Lag Calculator'
+description: 'Calculates the technical lag of the given package manager files.'
+inputs: 
+  inputPath:
+    description: 'Path to the package manager files to analyze, relative to the repository root.'
+    default: ''
+    required: true
+  outputPath:
+    description: 'Path to store the generated artifacts.'
+    default: 'statistics'
+    required: true
+outputs:
+  results:
+    description: 'The analysis results.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.inputPath}}
+    - ${{ inputs.outputPath}}
