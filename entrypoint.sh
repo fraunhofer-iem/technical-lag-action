@@ -31,5 +31,5 @@ copy_package_files() {
 
 copy_package_files "$inputPath" "$DESTINATION_DIR"
 
-./build/install/technical-lag-calculator/bin/technical-lag-calculator create-dependency-graph --projects-dir "$DESTINATION_DIR" --output-path /graphs 
-./build/install/technical-lag-calculator/bin/technical-lag-calculator calculate-technical-lag --dependency-graph-dirs /graphs --output-path $outputPath 
+sh /app/build/install/technical-lag-calculator/bin/technical-lag-calculator create-dependency-graph --projects-dir "$DESTINATION_DIR" --output-path /graphs 
+sh /app/build/install/technical-lag-calculator/bin/technical-lag-calculator calculate-technical-lag --dependency-graph-dirs /graphs --output-path $outputPath 
