@@ -17,6 +17,7 @@ mkdir -p "$GRAPH_DIR"
 copy_package_files() {
     local src_dir=$1
     local dest_dir=$2
+    echo "Atempting to copy files from $src_dir to $dest_dir"
     mkdir -p "$dest_dir"
     # Copy the package files if they exist
     if [ -f "$src_dir/package.json" ]; then
@@ -40,9 +41,11 @@ copy_files() {
 
     # If analyzeSubDir is true, iterate over subdirectories and copy package files
     if [ "$analyzeSubDir" = "true" ]; then
+        echo "Started analyzing subdirectories"
         find "$base_dir" -type d | while read -r dir; do
             # Create corresponding directory structure in DESTINATION_DIR
             relative_path="${dir#$base_dir/}"
+            echo "Sub dir relative path $relative_path"
             copy_package_files "$dir" "$dest_dir/$relative_path"
         done
     fi
