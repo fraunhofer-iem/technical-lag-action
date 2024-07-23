@@ -48,5 +48,9 @@ copy_files() {
 # Copy files from the inputPath to the DESTINATION_DIR
 copy_files "$inputPath" "$DESTINATION_DIR"
 
-sh /app/build/install/technical-lag-calculator/bin/technical-lag-calculator create-dependency-graph --projects-dir "$DESTINATION_DIR" --output-path "$GRAPH_DIR" 
+if [ "$analyzeSubDir" = "true" ]; then
+    sh /app/build/install/technical-lag-calculator/bin/technical-lag-calculator create-dependency-graph --multi-file-mode --projects-dir "$DESTINATION_DIR" --output-path "$GRAPH_DIR" 
+else
+    sh /app/build/install/technical-lag-calculator/bin/technical-lag-calculator create-dependency-graph --projects-dir "$DESTINATION_DIR/root" --output-path "$GRAPH_DIR" 
+fi
 sh /app/build/install/technical-lag-calculator/bin/technical-lag-calculator calculate-technical-lag --dependency-graph-dirs "$GRAPH_DIR" --output-path "$outputPath"
