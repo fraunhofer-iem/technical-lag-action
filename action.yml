@@ -22,3 +22,4 @@ runs:
   args:
     - ${{ inputs.inputPath}}
     - ${{ inputs.outputPath}}
+    - ${{ inputs.analyzeSubDirs }}
