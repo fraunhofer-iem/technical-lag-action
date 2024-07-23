@@ -9,6 +9,10 @@ inputs:
     description: 'Path to store the generated artifacts.'
     default: 'statistics'
     required: true
+  analyzeSubDirs:
+    default: 'false'
+    required: true
+    description: 'If set to true we analyze all package.json files found in the inputPath and its subdirectories.'
 outputs:
   results:
     description: 'The analysis results.'

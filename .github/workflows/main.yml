@@ -15,8 +15,17 @@ jobs:
           inputPath: examples
           outputPath: statistics
 
+      - name: Execute technical lag calculator
+        uses: ./
+        id: techlagnested
+        with:
+          inputPath: examples
+          outputPath: statistics
+          analyzeSubDirs: "true"
+
+
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: technical_lag_artifacts
-          path: ${{ github.workspace }}/statistics
+          path: ${{ github.workspace }}
